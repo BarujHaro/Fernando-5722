@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import snailpayRoutes from "./routes/snailpay.routes.js";
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +14,8 @@ app.get("/api/health", (_req, res) => {
     message: "SnailPay backend funcionando"
   });
 });
+
+app.use("/api/snailpay", snailpayRoutes);
 
 app.listen(PORT, () => {
   console.log(`Backend ejecutándose en http://localhost:${PORT}`);
