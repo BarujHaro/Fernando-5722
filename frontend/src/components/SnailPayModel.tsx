@@ -28,12 +28,12 @@ export const SnailPayModal: React.FC<Props> = ({ onSuccess, onClose }) => {
         headers['x-simulate-system-error'] = 'true';
       }
 
-      const response = await fetch('http://localhost:3001/api/snailpay/charge', {
+      const response = await fetch('http://localhost:3000/api/snailpay/charge', {
         method: 'POST',
         headers,
         body: JSON.stringify({
           cardNumber,
-          expirationDate,
+          expirationDate, 
           cvv,
           fullName,
           amount,

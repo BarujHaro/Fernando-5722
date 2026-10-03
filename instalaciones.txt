@@ -7,6 +7,8 @@ npm install react-router-dom crypto-js lucide-react
 npm install -D @types/crypto-js
 npm install recharts
 
+npm run dev
+
 back
 
 mkdir backend
@@ -15,3 +17,5 @@ npm init -y
 npm install express cors
 npm install -D typescript tsx @types/node @types/express @types/cors
 npx tsc --init
+
+npm run dev
