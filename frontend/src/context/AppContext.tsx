@@ -13,7 +13,9 @@ interface AppContextType {
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
-
+//React.FC<{children: ReactNode}> = ({children})
+//se utiliza en TypeScript para definir un componente funcional de React 
+// que acepta explícitamente componentes u otros elementos hijos en sus propiedades (props)
 export const AppProvider: React.FC<{children: ReactNode}> = ({children}) => {
     const [session, setSession] = useState<UserSession | null>(null);
     const [balance, setBalance] = useState<number>(0);

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { storageService } from '../services/storageService';
-
+// Define las propiedades (props) que el componente padre debe pasarle a este modal
 interface Props {
-  onSuccess: (newAmount: number) => void;
-  onClose: () => void;
+  onSuccess: (newAmount: number) => void; // Función callback que se ejecuta tras un pago exitoso, recibe el nuevo saldo
+  onClose: () => void;  // Función para cerrar el modal
 }
-
+// Define el componente funcional de React usando TypeScript (React.FC)
 export const SnailPayModal: React.FC<Props> = ({ onSuccess, onClose }) => {
-  const { session } = useAuth();
+  const { session } = useAuth();  // Obtiene los datos de la sesión del usuario actual
   
   const [cardNumber, setCardNumber] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
@@ -17,17 +17,18 @@ export const SnailPayModal: React.FC<Props> = ({ onSuccess, onClose }) => {
   const [amount, setAmount] = useState<number>(100);
   const [simulateSystemError, setSimulateSystemError] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-
+// Función principal que procesa el formulario 
   const handleCharge = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setMessage(null);
+    e.preventDefault(); // Evita que la página se recargue por el comportamiento nativo del formulario
+    setMessage(null);// Limpia cualquier mensaje previo en pantalla
 
     try {
+        // Configura las cabeceras HTTP iniciales indicando que se enviará un JSON
       const headers: Record<string, string> = { 'Content-Type': 'application/json' };
       if (simulateSystemError) {
         headers['x-simulate-system-error'] = 'true';
       }
-
+    // Realiza la petición POST a la API local que simula la pasarela de pagos SnailPay
       const response = await fetch('http://localhost:3000/api/snailpay/charge', {
         method: 'POST',
         headers,
@@ -44,7 +45,7 @@ export const SnailPayModal: React.FC<Props> = ({ onSuccess, onClose }) => {
 
       const data = await response.json();
 
-      // Guardar tarjeta y CVV ficticios en LocalStorage (Requerimiento 2.4)
+      // Guardar tarjeta y CVV ficticios en LocalStorage 
       storageService.saveCardData({ number: data.card_number, cvv: data.cvv });
 
       if (response.ok && data.status === 'approved') {
