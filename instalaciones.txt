@@ -24,7 +24,7 @@ npm install -D vitest
 
 npm run dev
 
-
+ 
 Para testing
 cd carpeta
 npx vitest

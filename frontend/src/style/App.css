@@ -6,7 +6,7 @@
     --color-texto: #111827;
     --color-tarjeta: #ffffff;
 
-    --color-secundario: #e0e0e0;
+    --color-secundario: #cfcfcf;
     
 }
 
@@ -24,6 +24,16 @@ body {
   -webkit-font-smoothing: antialiased; 
 }
 
+.card {
+  background-color: var(--color-tarjeta);
+  padding: 30px;
+  border-radius: 12px;      
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);  
+  width: 100%;
+  max-width: 400px;         
+  text-align: center; 
+}
+
 .boton-principal {
   background-color: var(--color-primario);
   color: var(--color-tarjeta);
@@ -37,6 +47,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease; 
 }
+
 .btn-secundario{
   background-color: var(--color-secundario);
   color: var(--color-texto);
@@ -50,6 +61,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease; 
 }
+
 .boton-principal:hover, .btn-secundario:hover {
   transform: scale(1.05); 
 }

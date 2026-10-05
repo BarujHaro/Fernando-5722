@@ -6,6 +6,12 @@ import { describe, test, beforeEach, afterEach, expect, vi } from 'vitest';
 import { useAuth } from '../context/AuthContext';
 import { LoginPage } from '../pages/LoginPage';
 
+/*
+Test para login donde se crea el componente
+Se simulan errores y la redirección al dashboard
+*/
+
+
 // Mock del hook useNavigate de react-router-dom
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {

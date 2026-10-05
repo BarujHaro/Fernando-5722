@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { processPayment } from './snailpay.service.js';
 
+//Este test simula los pagos (Exitoso, Rechazado y error de sistema)
+
 describe('SnailPay', () => {
 
   it('debe aprobar un pago exitoso', () => {

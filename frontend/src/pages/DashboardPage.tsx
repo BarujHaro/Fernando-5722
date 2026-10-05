@@ -41,13 +41,15 @@ export const DashboardPage: React.FC = () => {
 
       <hr />
 
-      <section className="second-section">
-        <h3>Usuario: {session?.user.fullName}</h3>
-        <p>
-          Saldo Actual: <strong>${balance.toFixed(2)}</strong>
-        </p>
-        <button onClick={() => setShowModal(true)} className='boton-principal'>Recargar Saldo</button>
-      </section>
+      
+      <div className="second-section">
+        <div className="card">        
+          <h3>Usuario: {session?.user.fullName}</h3>
+          <p>
+            Saldo Actual: <strong>${balance.toFixed(2)}</strong>
+          </p>
+          <button onClick={() => setShowModal(true)} className='boton-principal'>Recargar Saldo</button></div>
+      </div>
 
       <hr />
 
@@ -60,7 +62,7 @@ export const DashboardPage: React.FC = () => {
 
       <div className="charts-section">
         {/* Gráfica 1: Donut de Apuestas */}
-        <div className="chart-card chart-card-donut">
+        <div className="chart-card chart-card-donut card">
           <h4>Apuestas Ganadas vs Perdidas</h4>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -75,7 +77,7 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Gráfica 2: Barras de Caracoles */}
-        <div className="chart-card chart-card-bar">
+        <div className="chart-card chart-card-bar card">
           <h4>Victorias de Caracoles (6 Carreras)</h4>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={snailsData}>

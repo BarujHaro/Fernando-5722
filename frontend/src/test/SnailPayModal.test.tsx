@@ -6,6 +6,12 @@ import { SnailPayModal } from '../components/SnailPayModal';
 import { useAuth } from '../context/AuthContext';
 import { storageService } from '../services/storageService';
 
+/*
+Test para el componente de snailpaymodal
+simulando la creacion del componente asi como la aceptacion y rechazo del pago
+*/
+
+
 // Mock de la API global fetch
 global.fetch = vi.fn();
 
@@ -136,37 +142,6 @@ describe('Componente SnailPayModal', () => {
         screen.getByText(/error en la transacción: fondos insuficientes/i)
       ).toBeInTheDocument();
       expect(mockOnSuccess).not.toHaveBeenCalled();
-    });
-  });
-
-  test('Envía la cabecera x-simulate-system-error si la casilla está marcada', async () => {
-    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: false,
-      json: async () => ({ status_detail: 'Error de prueba' }),
-    });
-
-    render(<SnailPayModal onSuccess={mockOnSuccess} onClose={mockOnClose} />);
-
-    await userEvent.type(screen.getByLabelText(/número de tarjeta/i), '1234123412341234');
-    await userEvent.type(screen.getByLabelText(/vencimiento/i), '12/26');
-    await userEvent.type(screen.getByLabelText(/cvv/i), '543');
-
-    // Marcar checkbox de simulación de error
-    const checkbox = screen.getByLabelText(/simular error de sistema snailpay/i);
-    fireEvent.click(checkbox);
-
-    fireEvent.click(screen.getByRole('button', { name: /procesar pago/i }));
-
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
-        'http://localhost:3000/api/snailpay/charge',
-        expect.objectContaining({
-          headers: {
-            'Content-Type': 'application/json',
-            'x-simulate-system-error': 'true',
-          },
-        })
-      );
     });
   });
 

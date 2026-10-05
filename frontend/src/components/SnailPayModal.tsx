@@ -20,7 +20,21 @@ export const SnailPayModal: React.FC<Props> = ({ onSuccess, onClose }) => {
   const [amount, setAmount] = useState<number>(100);
   const [simulateSystemError, setSimulateSystemError] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-// Función principal que procesa el formulario 
+
+  //Manejador de cambio en el checkbox
+  const handleToggleSystemError = (isChecked: boolean) => {
+    setSimulateSystemError(isChecked);
+
+    if(isChecked){
+      setCardNumber('9999999999999999');
+    }else{
+      setCardNumber('');
+    }
+  };
+
+
+
+  // Función principal que procesa el formulario 
   const handleCharge = async (e: React.FormEvent) => {
     e.preventDefault(); // Evita que la página se recargue por el comportamiento nativo del formulario
     setMessage(null);// Limpia cualquier mensaje previo en pantalla
@@ -142,7 +156,7 @@ export const SnailPayModal: React.FC<Props> = ({ onSuccess, onClose }) => {
               <input 
                 type="checkbox" 
                 checked={simulateSystemError} 
-                onChange={(e) => setSimulateSystemError(e.target.checked)} 
+                onChange={(e) => handleToggleSystemError(e.target.checked)} 
               />
               {' '}Simular Error de Sistema SnailPay
             </label>
