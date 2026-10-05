@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {useAuth} from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import '../style/Auth.css';
+
 
 export const RegisterPage: React.FC = () => {
     const {register} = useAuth();
@@ -43,53 +45,61 @@ export const RegisterPage: React.FC = () => {
 
 
     return (
-<div style={{ maxWidth: '400px', margin: '40px auto', padding: '20px' }}>
-      <h2>Crear Cuenta</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className='pageContent'>
+      <h2>BIENVENIDO A SNAILBET</h2>
+
+       <div className="mainContent card">
+      <h3>Crear Cuenta</h3>
+      {error && <p className="errorMessage">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre completo:</label>
+        <div className="formGroup">
+          <label htmlFor="nombre">Nombre completo:</label>
           <input
+            id="nombre"
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            style={{ width: '100%', marginBottom: '10px' }}
+            
           />
         </div>
-        <div>
-          <label>Correo electrónico:</label>
+        <div className="formGroup">
+          <label htmlFor="email">Correo electrónico:</label>
           <input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ width: '100%', marginBottom: '10px' }}
+           
           />
         </div>
-        <div>
-          <label>Contraseña:</label>
+        <div className="formGroup">
+          <label htmlFor="password">Contraseña:</label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ width: '100%', marginBottom: '10px' }}
+           
           />
         </div>
-        <div>
-          <label>Confirmar contraseña:</label>
+        <div className="formGroup">
+          <label htmlFor="confirmPassword">Confirmar contraseña:</label>
           <input
+            id="confirmPassword"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            style={{ width: '100%', marginBottom: '10px' }}
           />
         </div>
-        <button type="submit" style={{ width: '100%', padding: '10px' }}>
+        <button type="submit" className="boton-principal">
           Registrarse
         </button>
       </form>
-      <p>
+      <hr></hr>
+      <p className="registerText">
         ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
       </p>
-    </div>        
+    </div>   
+    </div>     
     );
 };

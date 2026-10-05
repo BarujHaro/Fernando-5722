@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import '../style/Auth.css';
 
 export const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -28,36 +29,43 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '40px auto', padding: '20px' }}>
+    <div className='pageContent'>
       <h2>BIENVENIDO A SNAILBET</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+       <div className="mainContent card">
+      <h3>Iniciar sesión</h3>
+      {error && <p className="errorMessage">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Correo Electrónico:</label>
+        <div className="formGroup">
+          <label htmlFor="email">Correo Electrónico:</label>
           <input
+            id="email"
             type="email"
             placeholder="tu.correo@ejemplo.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ width: '100%', marginBottom: '10px' }}
+   
           />
         </div>
-        <div>
-          <label>Contraseña:</label>
+        <div className="formGroup">
+          <label htmlFor="password">Contraseña:</label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ width: '100%', marginBottom: '10px' }}
+
           />
         </div>
-        <button type="submit" style={{ width: '100%', padding: '10px' }}>
+        <button type="submit" className="boton-principal">
           Iniciar Sesión
         </button>
       </form>
-      <p style={{ marginTop: '15px' }}>
+      <hr></hr>
+      <p className="registerText">
         o <Link to="/register">Regístrate</Link>
       </p>
+      </div>
     </div>
   );
 };

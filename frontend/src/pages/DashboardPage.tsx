@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { storageService } from '../services/storageService';
-import { SnailPayModal } from '../components/SnailPayModel';
+import { SnailPayModal } from '../components/SnailPayModal';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import '../style/Dahsboard.css';
+
+
 
 // Datos simulados de apuestas (Donut)
 const betsData = [
@@ -30,21 +33,23 @@ export const DashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="dashboard-container">
+      <header className="user-balance">
         <h2>Dashboard - SnailBet</h2>
-        <button onClick={logout}>Cerrar Sesión</button>
+        <button onClick={logout} className='btn-secundario'>Cerrar Sesión</button>
       </header>
 
       <hr />
 
-      <section style={{ margin: '20px 0' }}>
+      <section className="second-section">
         <h3>Usuario: {session?.user.fullName}</h3>
-        <p style={{ fontSize: '1.2rem' }}>
+        <p>
           Saldo Actual: <strong>${balance.toFixed(2)}</strong>
         </p>
-        <button onClick={() => setShowModal(true)}>Recargar Saldo con SnailPay</button>
+        <button onClick={() => setShowModal(true)} className='boton-principal'>Recargar Saldo</button>
       </section>
+
+      <hr />
 
       {showModal && (
         <SnailPayModal 
@@ -53,9 +58,9 @@ export const DashboardPage: React.FC = () => {
         />
       )}
 
-      <div style={{ display: 'flex', gap: '40px', marginTop: '30px', flexWrap: 'wrap' }}>
+      <div className="charts-section">
         {/* Gráfica 1: Donut de Apuestas */}
-        <div style={{ width: '300px', height: '300px' }}>
+        <div className="chart-card chart-card-donut">
           <h4>Apuestas Ganadas vs Perdidas</h4>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -70,7 +75,7 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Gráfica 2: Barras de Caracoles */}
-        <div style={{ width: '400px', height: '300px' }}>
+        <div className="chart-card chart-card-bar">
           <h4>Victorias de Caracoles (6 Carreras)</h4>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={snailsData}>

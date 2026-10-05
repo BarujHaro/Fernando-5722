@@ -6,6 +6,9 @@ npm install
 npm install react-router-dom crypto-js lucide-react
 npm install -D @types/crypto-js
 npm install recharts
+npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
+npm install --save-dev @testing-library/user-event
+npm i --save-dev @types/jest
 
 npm run dev
 
@@ -17,5 +20,11 @@ npm init -y
 npm install express cors
 npm install -D typescript tsx @types/node @types/express @types/cors
 npx tsc --init
+npm install -D vitest
 
 npm run dev
+
+
+Para testing
+cd carpeta
+npx vitest

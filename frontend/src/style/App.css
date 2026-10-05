@@ -1,0 +1,56 @@
+:root {
+    --fuente-principal: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --color-primario: #4f46e5; 
+    --color-fondo: #eff0e7;
+    --color-texto: #111827;
+    --color-tarjeta: #ffffff;
+
+    --color-secundario: #e0e0e0;
+    
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased; 
+}
+
+.boton-principal {
+  background-color: var(--color-primario);
+  color: var(--color-tarjeta);
+  font-family: var(--fuente-principal);
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease; 
+}
+.btn-secundario{
+  background-color: var(--color-secundario);
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
+  border: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease; 
+}
+.boton-principal:hover, .btn-secundario:hover {
+  transform: scale(1.05); 
+}
+
