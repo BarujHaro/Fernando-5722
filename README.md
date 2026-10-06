@@ -128,11 +128,16 @@ Vite mostrará la dirección local para acceder a la aplicación.
 
 ## ▶️  Proyecto
 
-###Login
+### Login
+
 ![Login](./img/login.png)
-###Register
+
+### Register
+
 ![Register](./img/register.png)
-###Dashboard
+
+### Dashboard
+
 ![Dashboard](./img/dashboard.png)
 
 ---
